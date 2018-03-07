@@ -14,31 +14,64 @@
             margin: 10px;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1>Giphy R Us</h1>
+        <div class="row">
+            <div class="col">
 
-        <div id="gif-view"></div>
-        <div id="buttons-view"></div>
+                <h1>Giphy R Us</h1>
+                <!-- gifs will end up here -->
+                <div id="gif-view"></div>
 
-        <form id="gif-form">
-            <label for="gif-input">Add a Gif!</label>
-            <input type="text" id="gif-input">
-            <br>
-            <input id="add-movie" type="submit" value="Add a Movie Bro">
-        </form>
+                <!-- buttons generate here -->
+                <div id="buttons-view"></div>
+
+                <form id="gif-form">
+                    <label for="gif-input">Add a Gif!</label>
+                    <input type="text" id="gif-input">
+                    <br>
+                </form>
+            </div>
+            <div class="col">
+                <!-- Button trigger for gif to be added -->
+                <input id="add-gif" type="submit" value="Get New Gif">
+
+            </div>
+        </div>
+
+        <!-- gifs are sent here -->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <span id="gif-span">Test here</span>
+                </div>
+            </div>
+        </div>
+
+
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
             function displayGif() {
-                var gif = $(this).attr("date-name");
-                var queryURL = "https://giphy.com/?" + gif + "api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI"
+                let gif = $(this).attr("data-name");
+                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + search_term + "&limit=100&offset=0&rating=G&lang=en";
+                $.ajax({
+                    url: queryURL,
+                    method: 'GET'
+                }).then(function(response) {
+                    console.log(response);
+                    console.log(search_term)
+                })
             }
 
-            $(document).on("click", ".gif-btn", displayGifInfo);
+            // $(document).on("click", ".gif-btn", displayGifInfo);
 
-            renderButtons();
+            // renderButtons();
         </script>
 </body>
 
