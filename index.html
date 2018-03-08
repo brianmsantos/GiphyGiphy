@@ -75,9 +75,11 @@
                 console.log(gif)
             })
 
+            $('#buttons-view').on('click', '.gif', displayGif)
+
             function displayGif() {
                 let gif = $(this).attr("value");
-                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + gif + "&limit=100&offset=0&rating=G&lang=en";
+                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=NbOZMv8SuNL9CemY803hbPnoo4q8Yr5S=" + gif + "&limit=100&offset=0&rating=G&lang=en";
                 $.ajax({
                     url: queryURL,
                     method: "GET"
