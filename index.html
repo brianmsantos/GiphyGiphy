@@ -56,23 +56,55 @@
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- This will get the gifs info -->
         <script type="text/javascript">
-            function displayGif() {
-                let gif = $(this).attr("data-name");
-                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + search_term + "&limit=100&offset=0&rating=G&lang=en";
-                $.ajax({
-                    url: queryURL,
-                    method: 'GET'
-                }).then(function(response) {
-                    console.log(response);
-                    console.log(search_term)
-                })
+            function renderButtons() {
+                for (let i = 0; i < startingGifs.length; i++) {
+                    $("#buttons-view").append(`<button class ="gif" + value="${startingGifs[i]}">${startingGifs[i]}</button>`)
+
+                }
             }
+            let startingGifs = ["Batman", "Toys", "Planes", "Zebras"]
 
-            // $(document).on("click", ".gif-btn", displayGifInfo);
+            $("#buttons-view").on("click", function(event) {
+                event.preventDefault();
+                var gif = $("#gif-input").val().trim();
+                startingGifs.push(gif);
+                renderButtons()
+            })
 
-            // renderButtons();
+            // function displayGif() {
+            //     let gif = $(this).attr("data-name");
+            //     let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + search_term + "&limit=100&offset=0&rating=G&lang=en";
+            //     $.ajax({
+            //         url: queryURL,
+            //         method: 'GET'
+            //     }).then(function(response) {
+            //         console.log(response);
+
+            //     })
+            // }
+
+            // // div to hold the gifs
+            // let gifDiv = $("div class='gif'>")
+            //     // rating
+            // let rating = response
+            //     //creating an elemet to have rating displayed
+            // let ratingDiv = $("<p>").text("Rating: " + rating);
+            // // Display rating
+            // gifDiv.append(ratingDiv);
+
+
+
+
+
+
+            // // $(document).on("click", ".gif-btn", displayGifInfo);
+
+            renderButtons();
+            // displayGif(response)
         </script>
+
 </body>
 
 </html>
