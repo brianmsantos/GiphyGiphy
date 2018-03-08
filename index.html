@@ -59,6 +59,7 @@
         <!-- This will get the gifs info -->
         <script type="text/javascript">
             function renderButtons() {
+                $("#buttons-view").empty()
                 for (let i = 0; i < startingGifs.length; i++) {
                     $("#buttons-view").append(`<button class ="gif" + value="${startingGifs[i]}">${startingGifs[i]}</button>`)
 
@@ -66,11 +67,12 @@
             }
             let startingGifs = ["Batman", "Toys", "Planes", "Zebras"]
 
-            $("#buttons-view").on("click", function(event) {
+            $("#add-gif").on("click", function(event) {
                 event.preventDefault();
-                var gif = $("#gif-input").val().trim();
+                let gif = $("#gif-input").val().trim();
                 startingGifs.push(gif);
                 renderButtons()
+                console.log(gif)
             })
 
             // function displayGif() {
