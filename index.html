@@ -75,6 +75,18 @@
                 console.log(gif)
             })
 
+            function displayGif() {
+                let gif = $(this).attr("data-name");
+                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + search_term + "&limit=100&offset=0&rating=G&lang=en";
+                $.ajax({
+                    url: queryURL,
+                    method: "GET"
+                }).then(function(response) {
+                    console.log(response)
+                })
+            }
+
+
             // function displayGif() {
             //     let gif = $(this).attr("data-name");
             //     let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI=" + search_term + "&limit=100&offset=0&rating=G&lang=en";
