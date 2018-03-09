@@ -92,7 +92,7 @@
                         // Display the rating
                     gifDiv.append(ratingDiv)
                         // Retrieve image url
-                    let gifURL = response.data[0].url
+                    let gifURL = response.data[0].images.original_still.url
                         // Element for gif
                     let gifImage = $("<gif>").attr("src", gifURL)
                         // append the gif
