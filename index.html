@@ -65,7 +65,7 @@
 
                 }
             }
-            let startingGifs = ["Batman", "Toys", "Planes", "Zebras"]
+            let startingGifs = ["Alpaca", "Toys", "Planes", "Zebras"]
 
             $("#add-gif").on("click", function(event) {
                 event.preventDefault();
@@ -94,7 +94,7 @@
                         // Retrieve image url
                     let gifURL = response.data[0].images.original_still.url
                         // Element for gif
-                    let gifImage = $("<gif>").attr("src", gifURL)
+                    let gifImage = $("<img>").attr("src", gifURL)
                         // append the gif
                     gifDiv.append(gifImage);
                     // attach movie to page
