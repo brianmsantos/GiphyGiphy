@@ -77,25 +77,35 @@
 
             function displayGif() {
                 let gif = $(this).attr("value");
-                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI&q=" + gif + "&limit=100&offset=0&rating=G&lang=en";
+                let queryURL = "https://api.giphy.com/v1/gifs/search?api_key=EXPbVq3IviCIEjBWJ2Pgdw3xaW4xHKiI&q=" + gif + "&limit=1&offset=0&rating=G&lang=en";
                 $.ajax({
                     url: queryURL,
                     method: "GET"
                 }).then(function(response) {
                     console.log(response)
+                        // create a div to hold the gif
+                    let gifDiv = $("<div class = 'gif'>");
+                    // store rating
+                    let rating = response.data[0].rating
+                        // Creating an element to have rating displayed
+                    let ratingDiv = $("<p>").text("Rating: " + rating)
+                        // Display the rating
+                    gifDiv.append(ratingDiv)
+                        // Retrieve image url
+                    let gifURL = response.data[0].url
+                        // Element for gif
+                    let gifImage = $("<gif>").attr("src", gifURL)
+                        // append the gif
+                    gifDiv.append(gifImage);
+                    // attach movie to page
+                    $("#gif-view").prepend(gifDiv)
                 })
             }
 
             $('#buttons-view').on('click', '.gif', displayGif)
 
-            // // div to hold the gifs
-            // let gifDiv = $("div class='gif'>")
-            //     // rating
-            // let rating = response
-            //     //creating an elemet to have rating displayed
-            // let ratingDiv = $("<p>").text("Rating: " + rating);
-            // // Display rating
-            // gifDiv.append(ratingDiv);
+
+
 
 
 
